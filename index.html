@@ -91,7 +91,7 @@
       from { transform: translateY(-20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    /* Pulse-effekter (används vid hover/fokus på sektioner) */
+    /* Pulse-effekter */
     @keyframes pulseBorderIntro {
       0% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
       50% { box-shadow: 0 0 20px rgba(0,150,255,1); }
@@ -303,26 +303,39 @@ def min_funktion():
       <div id="quiz-container"></div>
     </section>
 
-    <!-- Chatbot Guide -->
+    <!-- Chatbot Guide med full information -->
     <section id="chatbot-guide" tabindex="0">
       <h2>Hur man gör en chatbot med Python</h2>
-      <p>Den här guiden hjälper dig att skapa en enkel chatbot i Python. Vi använder ett grundläggande tillvägagångssätt med Python och regex för att bygga en chatbot som kan svara på olika frågor.</p>
+      <p>Den här guiden hjälper dig att skapa en enkel chatbot i Python. Vi kommer att använda ett grundläggande tillvägagångssätt med Python och regex för att bygga en chatbot som kan svara på vissa frågor. Du behöver ingen tidigare erfarenhet av programmering för att följa den här guiden.</p>
+      
       <h3>Steg 1: Installera Python</h3>
-      <p>Om du inte redan har Python installerat, ladda ner det från:</p>
+      <p>Om du inte redan har Python installerat på din dator, kan du ladda ner och installera det från den officiella hemsidan:</p>
       <ul>
-        <li><a href="https://www.python.org" target="_blank">Python.org</a></li>
+        <li>Gå till <a href="https://www.python.org" target="_blank">Python.org</a>.</li>
+        <li>Ladda ner den senaste versionen och installera den.</li>
       </ul>
-      <h3>Steg 2: Förbered arbetsmiljön</h3>
-      <p>Använd en textredigerare som Visual Studio Code, Sublime Text eller Python IDLE.</p>
+      
+      <h3>Steg 2: Förbereda arbetsmiljön</h3>
+      <p>Innan vi börjar skriva kod, behöver du en textredigerare (t.ex. Visual Studio Code, Sublime Text, eller Python IDLE) för att skriva och köra Python-kod.</p>
+      
       <h3>Steg 3: Skapa din första chatbot</h3>
       <ol>
-        <li><strong>Skapa en Python-fil:</strong> Spara den som <code>chatbot.py</code>.</li>
-        <li><strong>Skriv din kod:</strong> Exempel:
-          <pre><code>def chatbot():
-    print("Hej! Jag är din chatbot. Skriv 'sluta' för att avsluta.")
+        <li>
+          <strong>Skapa en Python-fil:</strong> Öppna din textredigerare, skapa en ny fil och spara den som <code>chatbot.py</code>.
+        </li>
+        <li>
+          <strong>Skriv din första kod:</strong>
+          <p>Exempel på en enkel chatbot:</p>
+          <pre><code># Enkel chatbot
 
+def chatbot():
+    print("Hej! Jag är din chatbot. Skriv 'sluta' för att avsluta.")
+    
     while True:
-        user_input = input("Du: ").lower()
+        # Ta emot användarens input
+        user_input = input("Du: ").lower()  # Vi gör all text till små bokstäver för att jämföra enklare
+        
+        # Matcha med olika fördefinierade fraser
         if "hej" in user_input:
             print("Chatbot: Hej! Hur kan jag hjälpa dig idag?")
         elif "hur mår du" in user_input:
@@ -331,28 +344,70 @@ def min_funktion():
             print("Chatbot: Jag kan svara på enkla frågor och föra samtal med dig!")
         elif "sluta" in user_input:
             print("Chatbot: Hejdå! Ha en bra dag!")
-            break
+            break  # Avslutar chatboten
         else:
             print("Chatbot: Jag förstår inte riktigt. Kan du fråga något annat?")
 
+# Starta chatboten
 if __name__ == "__main__":
     chatbot()</code></pre>
         </li>
       </ol>
-      <h3>Steg 4: Förklaring</h3>
+      
+      <h3>Steg 4: Förklaring av koden</h3>
       <ul>
-        <li><strong>Funktioner:</strong> <code>def chatbot():</code> definierar funktionen.</li>
-        <li><strong>Användarinput:</strong> <code>input()</code> och <code>.lower()</code> för att hantera indata.</li>
-        <li><strong>Villkor:</strong> <code>if</code>-satser för att matcha indata.</li>
-        <li><strong>Avsluta:</strong> Skriv "sluta" för att bryta loopen.</li>
+        <li><strong>Funktioner i Python:</strong> <code>def chatbot():</code> definierar en funktion som kör chatboten.</li>
+        <li><strong>input():</strong> Användaren kan skriva något i terminalen. Texten lagras i variabeln <code>user_input</code>.</li>
+        <li><strong>.lower():</strong> Konverterar all input till små bokstäver så att versaler inte påverkar jämförelsen.</li>
+        <li><strong>Villkor (if/elif/else):</strong> Matchar användarens input mot specifika fraser och svarar med fördefinierade meddelanden.</li>
+        <li><strong>Avsluta programmet:</strong> När användaren skriver "sluta" används <code>break</code> för att bryta ut ur loopen.</li>
       </ul>
+      
       <h3>Steg 5: Köra chatboten</h3>
-      <p>Kör programmet med:</p>
-      <pre><code>python chatbot.py</code></pre>
+      <p>För att köra chatboten på din dator, följ dessa steg:</p>
+      <ol>
+        <li>Öppna en terminal (eller kommandoprompt om du använder Windows).</li>
+        <li>Navigera till den mapp där filen <code>chatbot.py</code> är sparad (använd <code>cd</code>-kommandot).</li>
+        <li>Kör programmet genom att skriva: <code>python chatbot.py</code></li>
+        <li>Chatboten startar och du kan börja skriva meddelanden i terminalen.</li>
+      </ol>
+      
       <h3>Steg 6: Förbättra chatboten</h3>
-      <p>Utöka med fler villkor eller använd regex för avancerad textmatchning.</p>
+      <p>När du har en enkel chatbot kan du förbättra den genom att:</p>
+      <ul>
+        <li>Lägga till fler if-satser så att den kan hantera fler typer av frågor, t.ex.:
+          <pre><code>elif "vad är ditt namn" in user_input:
+    print("Chatbot: Jag har inget namn, men du kan kalla mig Chatbot!")</code></pre>
+        </li>
+        <li>Använda regex (reguljära uttryck) för mer avancerad textmatchning, t.ex.:
+          <pre><code>import re
+
+def chatbot():
+    print("Hej! Jag är din chatbot. Skriv 'sluta' för att avsluta.")
+    
+    while True:
+        user_input = input("Du: ").lower()
+        
+        if re.search(r"hej|tjena|hallå", user_input):
+            print("Chatbot: Hej! Hur kan jag hjälpa dig idag?")
+        elif "hur mår du" in user_input:
+            print("Chatbot: Jag är en dator, så jag har inte känslor, men tack för att du frågar!")
+        elif "sluta" in user_input:
+            print("Chatbot: Hejdå!")
+            break
+        else:
+            print("Chatbot: Jag förstår inte riktigt.")</code></pre>
+        </li>
+        <li>Göra chatboten mer interaktiv genom att få den att svara dynamiskt baserat på användarens input, t.ex. fråga efter användarens namn och svara med det.</li>
+      </ul>
+      
       <h3>Steg 7: Utveckla vidare</h3>
-      <p>Prova externa bibliotek som <code>nltk</code> eller bygg en webbchatbot med Flask/Django.</p>
+      <p>När du känner dig bekväm med den grundläggande chatboten, kan du experimentera med:</p>
+      <ul>
+        <li>Externa bibliotek som <code>nltk</code> för att analysera och bearbeta språk.</li>
+        <li>Maskininlärning och neurala nätverk för att bygga chatbotar som lär sig med tiden.</li>
+        <li>Bygga en webbchatbot med hjälp av ramverk som Flask eller Django.</li>
+      </ul>
     </section>
 
     <!-- Live Editor -->
@@ -390,11 +445,11 @@ if __name__ == "__main__":
       { question: "Vad returnerar print(2 * 4)?", answer: "8" },
       { question: "Vad skrivs ut från for i in range(3)?", answer: "0\n1\n2" },
       { question: "Vad blir 10 // 3?", answer: "3" },
-      { question: "Vilken datatyp har x om x = 'Hej'?", answer: "str" },
+      { question: "Vilken datatyp har x om x = 'hej'?", answer: "str" },
       { question: "Vad returnerar lista = [1,2,3]; print(lista[1])?", answer: "2" },
-      { question: "Vad gör print('PYTHON'.lower())?", answer: "python" },
+      { question: "Vad gör print('python'.lower())?", answer: "python" },
       { question: "Vad returnerar print(5 > 3 and 2 < 4)?", answer: "True" },
-      { question: "Vad skrivs ut av for bokstav in 'Hej': print(bokstav)?", answer: "H\ne\nj" }
+      { question: "Vad skrivs ut av for bokstav in 'hej': print(bokstav)?", answer: "H\ne\nj" }
     ];
     function createQuiz() {
       const quizContainer = document.getElementById("quiz-container");
@@ -479,6 +534,45 @@ stdout.getvalue()
     });
 
     /* === Interaktiv Chatbot === */
+    // Ordbok med quiz-frågor, hintar och svar (alla nycklar i lowercase)
+    const quizAnswers = {
+      "vad returnerar print(2 * 4)?": {
+        hint: "Tänk på multiplikation av två tal.",
+        answer: "8"
+      },
+      "vad skrivs ut från for i in range(3)?": {
+        hint: "Det börjar med 0 och räknar uppåt.",
+        answer: "0\n1\n2"
+      },
+      "vad blir 10 // 3?": {
+        hint: "Heltalsdivision ger endast heltal.",
+        answer: "3"
+      },
+      "vilken datatyp har x om x = 'hej'?": {
+        hint: "Det är en textsträng.",
+        answer: "str"
+      },
+      "vad returnerar lista = [1,2,3]; print(lista[1])?": {
+        hint: "Kom ihåg att listindex börjar på 0.",
+        answer: "2"
+      },
+      "vad gör print('python'.lower())?": {
+        hint: "Det konverterar text till små bokstäver.",
+        answer: "python"
+      },
+      "vad returnerar print(5 > 3 and 2 < 4)?": {
+        hint: "Det utvärderar ett logiskt uttryck.",
+        answer: "True"
+      },
+      "vad skrivs ut av for bokstav in 'hej': print(bokstav)?": {
+        hint: "Det skriver ut varje bokstav på en ny rad.",
+        answer: "H\ne\nj"
+      }
+    };
+
+    let lastQuizQuestion = null; // Sparar den senaste quiz-frågan
+
+    // Lägg till ett meddelande i chatten
     function addChatMessage(text) {
       const container = document.getElementById("chat-messages");
       const messageDiv = document.createElement("div");
@@ -488,10 +582,25 @@ stdout.getvalue()
       container.appendChild(messageDiv);
       container.scrollTop = container.scrollHeight;
     }
+
+    // Processa meddelanden med specialhantering för quiz-frågor
     function processChatMessage(msg) {
-      const lowerMsg = msg.toLowerCase();
+      const lowerMsg = msg.toLowerCase().trim();
       let response = "";
-      // Här kan du lägga till fler villkor för att hantera olika typer av frågor
+
+      if (quizAnswers.hasOwnProperty(lowerMsg)) {
+        response = "Hint: " + quizAnswers[lowerMsg].hint;
+        lastQuizQuestion = lowerMsg;
+        addChatMessage("Chatbot: " + response);
+        return;
+      }
+      if (lastQuizQuestion && (lowerMsg.includes("jag fattar inte") || lowerMsg.includes("jag förstår inte"))) {
+        response = "Det rätta svaret är: " + quizAnswers[lastQuizQuestion].answer;
+        lastQuizQuestion = null;
+        addChatMessage("Chatbot: " + response);
+        return;
+      }
+
       if (lowerMsg.includes("hej")) {
         response = "Hej! Hur kan jag hjälpa dig med Python idag?";
       } else if (lowerMsg.includes("installera")) {
@@ -513,6 +622,8 @@ stdout.getvalue()
       }
       addChatMessage("Chatbot: " + response);
     }
+
+    // Skicka meddelande via knappen "Skicka"
     document.getElementById("chat-send").addEventListener("click", function() {
       const input = document.getElementById("chat-input");
       const message = input.value.trim();
@@ -520,6 +631,14 @@ stdout.getvalue()
         addChatMessage("Du: " + message);
         processChatMessage(message);
         input.value = "";
+      }
+    });
+
+    // Skicka meddelande via tangenten Enter
+    document.getElementById("chat-input").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("chat-send").click();
       }
     });
   </script>
