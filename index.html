@@ -41,7 +41,7 @@
             background: white;
             padding: 20px;
             border-radius: 5px;
-            /* Den vanliga fadeIn-animationen */
+            /* Alla sektioner får vid sidladdning fadeIn */
             animation: fadeIn 1.5s ease-in-out;
         }
         pre {
@@ -74,75 +74,64 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Unika pulserande glow-effekter för varje section */
-        /* Intro: En blåaktig glow */
-        #intro {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderIntro 2s infinite;
-        }
+        /* Definiera pulse-animationerna */
         @keyframes pulseBorderIntro {
             0% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
             50% { box-shadow: 0 0 20px rgba(0,150,255,1); }
             100% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
-        }
-
-        /* Install: En cyan glow */
-        #install {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderInstall 2s infinite;
         }
         @keyframes pulseBorderInstall {
             0% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
             50% { box-shadow: 0 0 20px rgba(0,200,200,1); }
             100% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
         }
-
-        /* Functions: En grönaktig glow */
-        #functions {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderFunctions 2s infinite;
-        }
         @keyframes pulseBorderFunctions {
             0% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
             50% { box-shadow: 0 0 20px rgba(0,180,100,1); }
             100% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
-        }
-
-        /* FAQ: En lila glow */
-        #faq {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderFaq 2s infinite;
         }
         @keyframes pulseBorderFaq {
             0% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
             50% { box-shadow: 0 0 20px rgba(150,0,150,1); }
             100% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
         }
-
-        /* Checklist: En orange glow */
-        #checklist {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderChecklist 2s infinite;
-        }
         @keyframes pulseBorderChecklist {
             0% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
             50% { box-shadow: 0 0 20px rgba(255,140,0,1); }
             100% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
-        }
-
-        /* Quiz: En röd glow */
-        #quiz {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderQuiz 2s infinite;
         }
         @keyframes pulseBorderQuiz {
             0% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
             50% { box-shadow: 0 0 20px rgba(255,0,0,1); }
             100% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
         }
-
-        /* Chatbot Guide: En klassisk blå glow */
-        #chatbot-guide {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderChatbot 2s infinite;
-        }
         @keyframes pulseBorderChatbot {
             0% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
             50% { box-shadow: 0 0 20px rgba(0,115,230,1); }
             100% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
+        }
+
+        /* Alla sektioner visar nu endast pulse-effekten vid hover */
+        #intro:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderIntro 2s infinite;
+        }
+        #install:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderInstall 2s infinite;
+        }
+        #functions:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderFunctions 2s infinite;
+        }
+        #faq:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderFaq 2s infinite;
+        }
+        #checklist:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderChecklist 2s infinite;
+        }
+        #quiz:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderQuiz 2s infinite;
+        }
+        #chatbot-guide:hover {
+            animation: fadeIn 1.5s ease-in-out, pulseBorderChatbot 2s infinite;
         }
     </style>
 </head>
@@ -354,6 +343,7 @@ if __name__ == "__main__":
     </section>
 
     <script>
+        // Quiz-data: Frågor och svar
         const quizData = [
             { question: "Vad returnerar print(2 * 4)?", answer: "8" },
             { question: "Vad skrivs ut från for i in range(3)?", answer: "0\n1\n2" },
@@ -365,6 +355,7 @@ if __name__ == "__main__":
             { question: "Vad skrivs ut av for bokstav in 'Hej': print(bokstav)?", answer: "H\ne\nj" }
         ];
 
+        // Skapar quizet dynamiskt och lägger in det i "quiz-container"
         function createQuiz() {
             const quizContainer = document.getElementById("quiz-container");
             quizData.forEach((q, index) => {
@@ -378,6 +369,7 @@ if __name__ == "__main__":
             });
         }
 
+        // Jämför användarens svar med rätt svar och visar resultatet
         function checkQuiz(index) {
             let answer = document.getElementById(`quiz${index}`).value.trim();
             let result = document.getElementById(`quizResult${index}`);
@@ -390,6 +382,7 @@ if __name__ == "__main__":
             }
         }
 
+        // Initierar quizet vid sidladdning
         createQuiz();
     </script>
 </body>
