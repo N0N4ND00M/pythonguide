@@ -1,286 +1,328 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lär dig Python</title>
-    <style>
-        /* Befintlig CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            animation: slideDown 1s ease-out;
-        }
-        nav {
-            background: #005bb5;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 15px;
-            font-size: 18px;
-            transition: transform 0.3s, color 0.3s;
-        }
-        nav a:hover {
-            transform: scale(1.2);
-            color: #ffdd00;
-        }
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            /* Alla sektioner får vid sidladdning fadeIn */
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        pre {
-            background: #eee;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        button {
-            background: #0073e6;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        button:hover {
-            background: #005bb5;
-            transform: translateY(-2px);
-        }
-
-        /* Grundläggande animationer */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideDown {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Definiera pulse-animationerna */
-        @keyframes pulseBorderIntro {
-            0% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
-            50% { box-shadow: 0 0 20px rgba(0,150,255,1); }
-            100% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
-        }
-        @keyframes pulseBorderInstall {
-            0% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
-            50% { box-shadow: 0 0 20px rgba(0,200,200,1); }
-            100% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
-        }
-        @keyframes pulseBorderFunctions {
-            0% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
-            50% { box-shadow: 0 0 20px rgba(0,180,100,1); }
-            100% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
-        }
-        @keyframes pulseBorderFaq {
-            0% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
-            50% { box-shadow: 0 0 20px rgba(150,0,150,1); }
-            100% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
-        }
-        @keyframes pulseBorderChecklist {
-            0% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
-            50% { box-shadow: 0 0 20px rgba(255,140,0,1); }
-            100% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
-        }
-        @keyframes pulseBorderQuiz {
-            0% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
-            50% { box-shadow: 0 0 20px rgba(255,0,0,1); }
-            100% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
-        }
-        @keyframes pulseBorderChatbot {
-            0% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
-            50% { box-shadow: 0 0 20px rgba(0,115,230,1); }
-            100% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
-        }
-
-        /* Alla sektioner visar nu endast pulse-effekten vid hover */
-        #intro:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderIntro 2s infinite;
-        }
-        #install:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderInstall 2s infinite;
-        }
-        #functions:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderFunctions 2s infinite;
-        }
-        #faq:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderFaq 2s infinite;
-        }
-        #checklist:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderChecklist 2s infinite;
-        }
-        #quiz:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderQuiz 2s infinite;
-        }
-        #chatbot-guide:hover {
-            animation: fadeIn 1.5s ease-in-out, pulseBorderChatbot 2s infinite;
-        }
-    </style>
+  <!-- Metadata och inställningar -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lär dig Python</title>
+  <!-- Extra meta-taggar för SEO och tillgänglighet -->
+  <meta name="description" content="En interaktiv guide för att lära sig Python med exempel, quiz, en live-editor och en interaktiv chatbot som hjälper dig direkt på sidan.">
+  <meta name="keywords" content="Python, guide, programmering, chatbot, interaktiv, live editor, lär dig Python">
+  <meta name="author" content="Ditt Namn">
+  <style>
+    /* Grundläggande stilar */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background: #0073e6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      animation: slideDown 1s ease-out;
+    }
+    /* Mörkt läge-knapp */
+    #toggle-dark-mode {
+      background: #ffdd00;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+    #toggle-dark-mode:hover {
+      background: #ffcc00;
+    }
+    nav {
+      background: #005bb5;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 15px;
+      font-size: 18px;
+      transition: transform 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      transform: scale(1.2);
+      color: #ffdd00;
+    }
+    /* Sektioner */
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    button {
+      background: #0073e6;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    button:hover {
+      background: #005bb5;
+      transform: translateY(-2px);
+    }
+    /* Animationer */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    /* Pulse-effekter (används vid hover/fokus på sektioner) */
+    @keyframes pulseBorderIntro {
+      0% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
+      50% { box-shadow: 0 0 20px rgba(0,150,255,1); }
+      100% { box-shadow: 0 0 10px rgba(0,150,255,0.5); }
+    }
+    @keyframes pulseBorderInstall {
+      0% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
+      50% { box-shadow: 0 0 20px rgba(0,200,200,1); }
+      100% { box-shadow: 0 0 10px rgba(0,200,200,0.5); }
+    }
+    @keyframes pulseBorderFunctions {
+      0% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
+      50% { box-shadow: 0 0 20px rgba(0,180,100,1); }
+      100% { box-shadow: 0 0 10px rgba(0,180,100,0.5); }
+    }
+    @keyframes pulseBorderFaq {
+      0% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
+      50% { box-shadow: 0 0 20px rgba(150,0,150,1); }
+      100% { box-shadow: 0 0 10px rgba(150,0,150,0.5); }
+    }
+    @keyframes pulseBorderChecklist {
+      0% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
+      50% { box-shadow: 0 0 20px rgba(255,140,0,1); }
+      100% { box-shadow: 0 0 10px rgba(255,140,0,0.5); }
+    }
+    @keyframes pulseBorderQuiz {
+      0% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
+      50% { box-shadow: 0 0 20px rgba(255,0,0,1); }
+      100% { box-shadow: 0 0 10px rgba(255,0,0,0.5); }
+    }
+    @keyframes pulseBorderChatbot {
+      0% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
+      50% { box-shadow: 0 0 20px rgba(0,115,230,1); }
+      100% { box-shadow: 0 0 10px rgba(0,115,230,0.5); }
+    }
+    /* Pulse vid hover/fokus */
+    #intro:hover, #intro:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderIntro 2s infinite; }
+    #install:hover, #install:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderInstall 2s infinite; }
+    #functions:hover, #functions:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderFunctions 2s infinite; }
+    #faq:hover, #faq:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderFaq 2s infinite; }
+    #checklist:hover, #checklist:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderChecklist 2s infinite; }
+    #quiz:hover, #quiz:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderQuiz 2s infinite; }
+    #chatbot-guide:hover, #chatbot-guide:focus,
+    #chatbot-interactive:hover, #chatbot-interactive:focus { animation: fadeIn 1.5s ease-in-out, pulseBorderChatbot 2s infinite; }
+    /* Mörkt läge */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .dark-mode header { background: #1f1f1f; }
+    .dark-mode nav { background: #333; }
+    .dark-mode section { background: #1f1f1f; color: #e0e0e0; }
+    .dark-mode pre { background: #333; color: #e0e0e0; }
+    .dark-mode button { background: #1f1f1f; color: #e0e0e0; }
+    /* Tillbaka-till-toppen-knapp */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background: #0073e6;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: opacity 0.3s;
+    }
+    #back-to-top:hover { background: #005bb5; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Lär dig Python – En Interaktiv Guide</h1>
-        <p>En komplett introduktion till Python för nybörjare.</p>
-    </header>
+  <!-- Sidhuvud -->
+  <header role="banner">
+    <h1>Lär dig Python – En Interaktiv Guide</h1>
+    <p>En komplett introduktion till Python för nybörjare.</p>
+    <button id="toggle-dark-mode">Mörkt läge</button>
+  </header>
 
-    <nav>
-        <a href="#intro">Vad är Python?</a>
-        <a href="#install">Installera Python</a>
-        <a href="#functions">Funktioner i Python</a>
-        <a href="#faq">FAQ</a>
-        <a href="#checklist">Checklista</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#chatbot-guide">Chatbot Guide</a>
-    </nav>
+  <!-- Navigationsmeny -->
+  <nav role="navigation" aria-label="Huvudmeny">
+    <a href="#intro">Vad är Python?</a>
+    <a href="#install">Installera Python</a>
+    <a href="#functions">Funktioner i Python</a>
+    <a href="#faq">FAQ</a>
+    <a href="#checklist">Checklista</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#chatbot-guide">Chatbot Guide</a>
+    <a href="#live-editor">Live Editor</a>
+    <a href="#chatbot-interactive">Interaktiv Chatbot</a>
+  </nav>
 
-    <section id="intro">
-        <h2>Vad är Python?</h2>
-        <p>Python är ett populärt programmeringsspråk känt för sin enkelhet och mångsidighet.</p>
+  <!-- Huvudinnehåll -->
+  <main>
+    <!-- Introduktion -->
+    <section id="intro" tabindex="0">
+      <h2>Vad är Python?</h2>
+      <p>Python är ett populärt programmeringsspråk känt för sin enkelhet och mångsidighet.</p>
     </section>
 
-    <section id="install">
-        <h2>Hur installerar man Python?</h2>
-        <ol>
-            <li>Gå till <a href="https://www.python.org/downloads/" target="_blank">Python.org</a> och ladda ner Python.</li>
-            <li>Öppna installationsfilen och välj "Add Python to PATH".</li>
-            <li>Klicka på "Install Now" och vänta tills installationen är klar.</li>
-            <li>Öppna terminalen och skriv <code>python --version</code> för att kontrollera installationen.</li>
-        </ol>
+    <!-- Installationsguide -->
+    <section id="install" tabindex="0">
+      <h2>Hur installerar man Python?</h2>
+      <ol>
+        <li>Gå till <a href="https://www.python.org/downloads/" target="_blank">Python.org</a> och ladda ner Python.</li>
+        <li>Öppna installationsfilen och välj "Add Python to PATH".</li>
+        <li>Klicka på "Install Now" och vänta tills installationen är klar.</li>
+        <li>Öppna terminalen och skriv <code>python --version</code> för att kontrollera installationen.</li>
+      </ol>
     </section>
 
-    <section id="functions">
-        <h2>Enkel funktion i Python</h2>
-        <p>En funktion är en kodsnutt som kan ta in data och returnera ett resultat.</p>
-        <pre><code>
+    <!-- Enkel funktion -->
+    <section id="functions" tabindex="0">
+      <h2>Enkel funktion i Python</h2>
+      <p>En funktion är en kodsnutt som kan ta in data och returnera ett resultat.</p>
+      <pre><code>
 def hälsa(namn):
     return f"Hej, {namn}!"
 
-print(hälsa("Alice")) # Output: Hej, Alice!
-        </code></pre>
+print(hälsa("Alice"))  # Output: Hej, Alice!
+      </code></pre>
     </section>
 
-    <section id="faq">
-        <h2>FAQ – Vanliga problem</h2>
-        <details><summary>Jag får felet "SyntaxError: invalid syntax"</summary>
-            <p>Dubbelkolla att du har rätt indrag (4 mellanslag eller en tab) efter <code>def</code>.</p>
-        </details>
-        <details><summary>Hur tar jag in användarinmatning?</summary>
-            <p>Använd <code>input()</code>:</p>
-            <pre><code>
+    <!-- FAQ -->
+    <section id="faq" tabindex="0">
+      <h2>FAQ – Vanliga problem</h2>
+      <details>
+        <summary>Jag får felet "SyntaxError: invalid syntax"</summary>
+        <p>Dubbelkolla att du har rätt indrag (4 mellanslag eller en tab) efter <code>def</code>.</p>
+      </details>
+      <details>
+        <summary>Hur tar jag in användarinmatning?</summary>
+        <p>Använd <code>input()</code>:</p>
+        <pre><code>
 namn = input("Vad heter du?")
 print("Hej, " + namn + "!")
-            </code></pre>
-        </details>
-        <details><summary>Hur konverterar jag en sträng till en siffra?</summary>
-            <p>Använd <code>int()</code> eller <code>float()</code>.</p>
-        </details>
-        <details><summary>Hur kontrollerar jag om ett tal är jämnt eller udda?</summary>
-            <p>Använd <code>if tal % 2 == 0</code>.</p>
-        </details>
-        <details><summary>Hur skapar jag en lista?</summary>
-            <p>Använd hakparenteser: <code>min_lista = [1, 2, 3]</code>.</p>
-        </details>
-        <details><summary>Vad gör <code>.lower()</code>?</summary>
-            <p>Konverterar en sträng till små bokstäver.</p>
-        </details>
-        <details><summary>Hur använder jag <code>if</code>-satser?</summary>
-            <pre><code>
+        </code></pre>
+      </details>
+      <details>
+        <summary>Hur konverterar jag en sträng till en siffra?</summary>
+        <p>Använd <code>int()</code> eller <code>float()</code>.</p>
+      </details>
+      <details>
+        <summary>Hur kontrollerar jag om ett tal är jämnt eller udda?</summary>
+        <p>Använd <code>if tal % 2 == 0</code>.</p>
+      </details>
+      <details>
+        <summary>Hur skapar jag en lista?</summary>
+        <p>Använd hakparenteser: <code>min_lista = [1, 2, 3]</code>.</p>
+      </details>
+      <details>
+        <summary>Vad gör <code>.lower()</code>?</summary>
+        <p>Konverterar en sträng till små bokstäver.</p>
+      </details>
+      <details>
+        <summary>Hur använder jag <code>if</code>-satser?</summary>
+        <pre><code>
 if 5 > 3:
     print("5 är större än 3")
-            </code></pre>
-        </details>
-        <details><summary>Hur loopar jag genom en lista?</summary>
-            <pre><code>
+        </code></pre>
+      </details>
+      <details>
+        <summary>Hur loopar jag genom en lista?</summary>
+        <pre><code>
 for x in [1, 2, 3]:
     print(x)
-            </code></pre>
-        </details>
-        <details><summary>Hur avbryter jag en loop?</summary>
-            <pre><code>
+        </code></pre>
+      </details>
+      <details>
+        <summary>Hur avbryter jag en loop?</summary>
+        <pre><code>
 for x in range(10):
     if x == 5:
         break
     print(x)
-            </code></pre>
-        </details>
-        <details><summary>Hur definierar jag en funktion?</summary>
-            <pre><code>
+        </code></pre>
+      </details>
+      <details>
+        <summary>Hur definierar jag en funktion?</summary>
+        <pre><code>
 def min_funktion():
     print("Hej!")
-            </code></pre>
-        </details>
+        </code></pre>
+      </details>
     </section>
 
-    <section id="checklist">
-        <h2>Interaktiv Checklista</h2>
-        <p>Markera de steg du har förstått:</p>
-        <ul>
-            <li><input type="checkbox"> Jag förstår vad Python är.</li>
-            <li><input type="checkbox"> Jag vet hur man installerar Python.</li>
-            <li><input type="checkbox"> Jag har skrivit en funktion i Python.</li>
-            <li><input type="checkbox"> Jag har testat att använda <code>input()</code>.</li>
-            <li><input type="checkbox"> Jag förstår hur man använder variabler och datatyper.</li>
-            <li><input type="checkbox"> Jag har använt <code>if</code>-satser för att fatta beslut.</li>
-            <li><input type="checkbox"> Jag har använt loopar (<code>while</code>).</li>
-            <li><input type="checkbox"> Jag har hanterat listor och dictionaries.</li>
-            <li><input type="checkbox"> Jag har skrivit och använt egna funktioner.</li>
-            <li><input type="checkbox"> Jag har testat att läsa och skriva till filer.</li>
-        </ul>
+    <!-- Checklista -->
+    <section id="checklist" tabindex="0">
+      <h2>Interaktiv Checklista</h2>
+      <p>Markera de steg du har förstått:</p>
+      <ul>
+        <li><input type="checkbox"> Jag förstår vad Python är.</li>
+        <li><input type="checkbox"> Jag vet hur man installerar Python.</li>
+        <li><input type="checkbox"> Jag har skrivit en funktion i Python.</li>
+        <li><input type="checkbox"> Jag har testat att använda <code>input()</code>.</li>
+        <li><input type="checkbox"> Jag förstår hur man använder variabler och datatyper.</li>
+        <li><input type="checkbox"> Jag har använt <code>if</code>-satser för att fatta beslut.</li>
+        <li><input type="checkbox"> Jag har använt loopar (<code>while</code>).</li>
+        <li><input type="checkbox"> Jag har hanterat listor och dictionaries.</li>
+        <li><input type="checkbox"> Jag har skrivit och använt egna funktioner.</li>
+        <li><input type="checkbox"> Jag har testat att läsa och skriva till filer.</li>
+      </ul>
     </section>
 
-    <section id="quiz">
-        <h2>Quiz – Testa dina kunskaper</h2>
-        <div id="quiz-container"></div>
+    <!-- Quiz -->
+    <section id="quiz" tabindex="0">
+      <h2>Quiz – Testa dina kunskaper</h2>
+      <div id="quiz-container"></div>
     </section>
 
-    <section id="chatbot-guide">
-        <h2>Hur man gör en chatbot med Python</h2>
-        <p>Den här guiden hjälper dig att skapa en enkel chatbot i Python. Vi kommer att använda ett grundläggande tillvägagångssätt med Python och regex för att bygga en chatbot som kan svara på vissa frågor. Du behöver ingen tidigare erfarenhet av programmering för att följa den här guiden.</p>
-        
-        <h3>Steg 1: Installera Python</h3>
-        <p>Om du inte redan har Python installerat på din dator, kan du ladda ner och installera det från den officiella hemsidan:</p>
-        <ul>
-            <li>Gå till <a href="https://www.python.org" target="_blank">Python.org</a>.</li>
-            <li>Ladda ner den senaste versionen och installera den.</li>
-        </ul>
-        
-        <h3>Steg 2: Förbereda arbetsmiljön</h3>
-        <p>Innan vi börjar skriva kod, behöver du en textredigerare (t.ex. Visual Studio Code, Sublime Text eller Python IDLE) för att skriva och köra Python-kod.</p>
-        
-        <h3>Steg 3: Skapa din första chatbot</h3>
-        <ol>
-            <li>
-                <strong>Skapa en Python-fil:</strong> Öppna din textredigerare, skapa en ny fil och spara den som <code>chatbot.py</code>.
-            </li>
-            <li>
-                <strong>Skriv din första kod:</strong>
-                <p>Exempel på en enkel chatbot:</p>
-                <pre><code>def chatbot():
+    <!-- Chatbot Guide -->
+    <section id="chatbot-guide" tabindex="0">
+      <h2>Hur man gör en chatbot med Python</h2>
+      <p>Den här guiden hjälper dig att skapa en enkel chatbot i Python. Vi använder ett grundläggande tillvägagångssätt med Python och regex för att bygga en chatbot som kan svara på olika frågor.</p>
+      <h3>Steg 1: Installera Python</h3>
+      <p>Om du inte redan har Python installerat, ladda ner det från:</p>
+      <ul>
+        <li><a href="https://www.python.org" target="_blank">Python.org</a></li>
+      </ul>
+      <h3>Steg 2: Förbered arbetsmiljön</h3>
+      <p>Använd en textredigerare som Visual Studio Code, Sublime Text eller Python IDLE.</p>
+      <h3>Steg 3: Skapa din första chatbot</h3>
+      <ol>
+        <li><strong>Skapa en Python-fil:</strong> Spara den som <code>chatbot.py</code>.</li>
+        <li><strong>Skriv din kod:</strong> Exempel:
+          <pre><code>def chatbot():
     print("Hej! Jag är din chatbot. Skriv 'sluta' för att avsluta.")
 
     while True:
-        # Ta emot användarens input
         user_input = input("Du: ").lower()
-        
-        # Matcha med olika fördefinierade fraser
         if "hej" in user_input:
             print("Chatbot: Hej! Hur kan jag hjälpa dig idag?")
         elif "hur mår du" in user_input:
@@ -295,95 +337,191 @@ def min_funktion():
 
 if __name__ == "__main__":
     chatbot()</code></pre>
-            </li>
-        </ol>
-        
-        <h3>Steg 4: Förklaring av koden</h3>
-        <ul>
-            <li><strong>Funktioner i Python:</strong> <code>def chatbot():</code> definierar en funktion som kör chatboten.</li>
-            <li><strong>Användarinput:</strong> <code>input()</code> används för att ta emot data från användaren, och <code>.lower()</code> gör om texten till små bokstäver.</li>
-            <li><strong>Villkor:</strong> Med <code>if</code>-satser matchas användarens input mot specifika fraser.</li>
-            <li><strong>Avsluta programmet:</strong> När användaren skriver "sluta" avslutas loopen med <code>break</code>.</li>
-        </ul>
-        
-        <h3>Steg 5: Köra chatboten</h3>
-        <p>Öppna en terminal (eller kommandoprompt om du använder Windows) och navigera till mappen där <code>chatbot.py</code> är sparad. Kör programmet med kommandot:</p>
-        <pre><code>python chatbot.py</code></pre>
-        
-        <h3>Steg 6: Förbättra chatboten</h3>
-        <p>När du har en grundläggande chatbot kan du göra den mer avancerad genom att:</p>
-        <ul>
-            <li>Lägga till fler svar och mönster med fler <code>if</code>-satser.</li>
-            <li>Använda regex för mer avancerad textmatchning. Exempel:</li>
-        </ul>
-        <pre><code>import re
-
-def chatbot():
-    print("Hej! Jag är din chatbot. Skriv 'sluta' för att avsluta.")
-
-    while True:
-        user_input = input("Du: ").lower()
-        
-        if re.search(r"hej|tjena|hallå", user_input):
-            print("Chatbot: Hej! Hur kan jag hjälpa dig idag?")
-        elif "hur mår du" in user_input:
-            print("Chatbot: Jag är en dator, så jag har inte känslor, men tack för att du frågar!")
-        elif "sluta" in user_input:
-            print("Chatbot: Hejdå!")
-            break
-        else:
-            print("Chatbot: Jag förstår inte riktigt.")
-
-if __name__ == "__main__":
-    chatbot()</code></pre>
-        <p>Du kan även göra chatboten mer interaktiv genom att låta den svara dynamiskt, exempelvis genom att fråga användarens namn.</p>
-        
-        <h3>Steg 7: Utveckla vidare</h3>
-        <p>När du känner dig bekväm med den grundläggande chatboten, kan du experimentera med externa bibliotek som <code>nltk</code> för språkanalys eller bygga en webbchatbot med hjälp av Flask eller Django.</p>
+        </li>
+      </ol>
+      <h3>Steg 4: Förklaring</h3>
+      <ul>
+        <li><strong>Funktioner:</strong> <code>def chatbot():</code> definierar funktionen.</li>
+        <li><strong>Användarinput:</strong> <code>input()</code> och <code>.lower()</code> för att hantera indata.</li>
+        <li><strong>Villkor:</strong> <code>if</code>-satser för att matcha indata.</li>
+        <li><strong>Avsluta:</strong> Skriv "sluta" för att bryta loopen.</li>
+      </ul>
+      <h3>Steg 5: Köra chatboten</h3>
+      <p>Kör programmet med:</p>
+      <pre><code>python chatbot.py</code></pre>
+      <h3>Steg 6: Förbättra chatboten</h3>
+      <p>Utöka med fler villkor eller använd regex för avancerad textmatchning.</p>
+      <h3>Steg 7: Utveckla vidare</h3>
+      <p>Prova externa bibliotek som <code>nltk</code> eller bygg en webbchatbot med Flask/Django.</p>
     </section>
 
-    <script>
-        // Quiz-data: Frågor och svar
-        const quizData = [
-            { question: "Vad returnerar print(2 * 4)?", answer: "8" },
-            { question: "Vad skrivs ut från for i in range(3)?", answer: "0\n1\n2" },
-            { question: "Vad blir 10 // 3?", answer: "3" },
-            { question: "Vilken datatyp har x om x = 'Hej'?", answer: "str" },
-            { question: "Vad returnerar lista = [1,2,3]; print(lista[1])?", answer: "2" },
-            { question: "Vad gör print('PYTHON'.lower())?", answer: "python" },
-            { question: "Vad returnerar print(5 > 3 and 2 < 4)?", answer: "True" },
-            { question: "Vad skrivs ut av for bokstav in 'Hej': print(bokstav)?", answer: "H\ne\nj" }
-        ];
+    <!-- Live Editor -->
+    <section id="live-editor" tabindex="0">
+      <h2>Interaktiv Python Editor</h2>
+      <p>Skriv din Python-kod nedan och kör den direkt i webbläsaren med hjälp av Pyodide.</p>
+      <textarea id="code-editor" rows="10" style="width: 100%; font-family: monospace;">print("Hej från Pyodide!")</textarea>
+      <br>
+      <button id="run-code">Kör koden</button>
+      <h3>Output:</h3>
+      <pre id="code-output" style="background: #333; color: #eee; padding: 10px; border-radius: 5px;"></pre>
+    </section>
 
-        // Skapar quizet dynamiskt och lägger in det i "quiz-container"
-        function createQuiz() {
-            const quizContainer = document.getElementById("quiz-container");
-            quizData.forEach((q, index) => {
-                const quizHTML = `
-                    <p>${index + 1}. ${q.question}</p>
-                    <input type="text" id="quiz${index}" placeholder="Skriv ditt svar här">
-                    <button onclick="checkQuiz(${index})">Kolla svar</button>
-                    <p id="quizResult${index}"></p>
-                `;
-                quizContainer.innerHTML += quizHTML;
-            });
-        }
+    <!-- Interaktiv Chatbot -->
+    <section id="chatbot-interactive" tabindex="0">
+      <h2>Interaktiv Chatbot</h2>
+      <p>Behöver du hjälp med något? Ställ din fråga här så svarar chatboten direkt!</p>
+      <div id="chat-container" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto;">
+        <div id="chat-messages"></div>
+      </div>
+      <input type="text" id="chat-input" placeholder="Skriv din fråga här..." style="width: 80%; padding: 10px; margin-top: 10px;">
+      <button id="chat-send">Skicka</button>
+    </section>
+  </main>
 
-        // Jämför användarens svar med rätt svar och visar resultatet
-        function checkQuiz(index) {
-            let answer = document.getElementById(`quiz${index}`).value.trim();
-            let result = document.getElementById(`quizResult${index}`);
-            if (answer === quizData[index].answer) {
-                result.innerHTML = "✅ Rätt!";
-                result.style.color = "green";
-            } else {
-                result.innerHTML = "❌ Fel! Prova igen.";
-                result.style.color = "red";
-            }
-        }
+  <!-- Tillbaka-till-toppen-knapp -->
+  <button id="back-to-top" title="Tillbaka till toppen">⬆️</button>
 
-        // Initierar quizet vid sidladdning
-        createQuiz();
-    </script>
+  <!-- Ladda Pyodide -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
+  <script>
+    /* === Quiz-funktionalitet === */
+    const quizData = [
+      { question: "Vad returnerar print(2 * 4)?", answer: "8" },
+      { question: "Vad skrivs ut från for i in range(3)?", answer: "0\n1\n2" },
+      { question: "Vad blir 10 // 3?", answer: "3" },
+      { question: "Vilken datatyp har x om x = 'Hej'?", answer: "str" },
+      { question: "Vad returnerar lista = [1,2,3]; print(lista[1])?", answer: "2" },
+      { question: "Vad gör print('PYTHON'.lower())?", answer: "python" },
+      { question: "Vad returnerar print(5 > 3 and 2 < 4)?", answer: "True" },
+      { question: "Vad skrivs ut av for bokstav in 'Hej': print(bokstav)?", answer: "H\ne\nj" }
+    ];
+    function createQuiz() {
+      const quizContainer = document.getElementById("quiz-container");
+      quizData.forEach((q, index) => {
+        const quizHTML = `
+          <p>${index + 1}. ${q.question}</p>
+          <input type="text" id="quiz${index}" placeholder="Skriv ditt svar här">
+          <button onclick="checkQuiz(${index})">Kolla svar</button>
+          <p id="quizResult${index}"></p>
+        `;
+        quizContainer.innerHTML += quizHTML;
+      });
+    }
+    function checkQuiz(index) {
+      let answer = document.getElementById(`quiz${index}`).value.trim();
+      let result = document.getElementById(`quizResult${index}`);
+      if (answer === quizData[index].answer) {
+        result.innerHTML = "✅ Rätt!";
+        result.style.color = "green";
+      } else {
+        result.innerHTML = "❌ Fel! Prova igen.";
+        result.style.color = "red";
+      }
+    }
+    createQuiz();
+
+    /* === Mörkt läge === */
+    const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
+    toggleDarkModeButton.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    /* === Tillbaka till toppen === */
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopButton.style.display = "block";
+      } else {
+        backToTopButton.style.display = "none";
+      }
+    });
+    backToTopButton.addEventListener('click', function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    /* === Kopiera-kod-knappar === */
+    document.querySelectorAll("pre code").forEach(block => {
+      let copyButton = document.createElement("button");
+      copyButton.innerText = "Kopiera kod";
+      copyButton.style.float = "right";
+      copyButton.style.margin = "5px";
+      copyButton.style.fontSize = "14px";
+      copyButton.addEventListener("click", function() {
+        navigator.clipboard.writeText(block.innerText).then(function() {
+          copyButton.innerText = "Kopierad!";
+          setTimeout(() => { copyButton.innerText = "Kopiera kod"; }, 2000);
+        });
+      });
+      block.parentNode.insertBefore(copyButton, block);
+    });
+
+    /* === Live Python Editor med Pyodide === */
+    async function loadPyodideAndPackages() {
+      window.pyodide = await loadPyodide();
+    }
+    loadPyodideAndPackages();
+    document.getElementById("run-code").addEventListener("click", async function() {
+      const code = document.getElementById("code-editor").value;
+      try {
+        let result = await pyodide.runPythonAsync(`
+import io, sys
+stdout = io.StringIO()
+sys.stdout = stdout
+${code}
+sys.stdout = sys.__stdout__
+stdout.getvalue()
+        `);
+        document.getElementById("code-output").textContent = result;
+      } catch (err) {
+        document.getElementById("code-output").textContent = err;
+      }
+    });
+
+    /* === Interaktiv Chatbot === */
+    function addChatMessage(text) {
+      const container = document.getElementById("chat-messages");
+      const messageDiv = document.createElement("div");
+      messageDiv.textContent = text;
+      messageDiv.style.padding = "5px";
+      messageDiv.style.marginBottom = "5px";
+      container.appendChild(messageDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+    function processChatMessage(msg) {
+      const lowerMsg = msg.toLowerCase();
+      let response = "";
+      // Här kan du lägga till fler villkor för att hantera olika typer av frågor
+      if (lowerMsg.includes("hej")) {
+        response = "Hej! Hur kan jag hjälpa dig med Python idag?";
+      } else if (lowerMsg.includes("installera")) {
+        response = "För att installera Python, gå till python.org, ladda ner den senaste versionen och välj 'Add Python to PATH' under installationen.";
+      } else if (lowerMsg.includes("faq") || lowerMsg.includes("problem")) {
+        response = "Kolla FAQ-sektionen för vanliga problem, där får du svar på syntaxfel, input-problem med mera.";
+      } else if (lowerMsg.includes("funktion") || lowerMsg.includes("kod")) {
+        response = "Se sektionen om 'Enkel funktion i Python' för exempel på hur du definierar funktioner.";
+      } else if (lowerMsg.includes("quiz")) {
+        response = "Du kan testa dina kunskaper i quiz-sektionen. Svara på frågorna och se hur du klarar dig!";
+      } else if (lowerMsg.includes("hjälp")) {
+        response = "Självklart! Vad behöver du hjälp med? Fråga om installation, syntax eller något annat inom Python.";
+      } else if (lowerMsg.includes("tack")) {
+        response = "Varsågod! Hör gärna av dig om du har fler frågor.";
+      } else if (lowerMsg.includes("sluta")) {
+        response = "Hejdå! Kom tillbaka om du behöver mer hjälp.";
+      } else {
+        response = "Förlåt, jag förstår inte riktigt din fråga. Kan du formulera om den?";
+      }
+      addChatMessage("Chatbot: " + response);
+    }
+    document.getElementById("chat-send").addEventListener("click", function() {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (message !== "") {
+        addChatMessage("Du: " + message);
+        processChatMessage(message);
+        input.value = "";
+      }
+    });
+  </script>
 </body>
 </html>
